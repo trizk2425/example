@@ -1,6 +1,6 @@
-<!-- Cambridge Entrepreneurship Programme -->
+<!-- Cambridge Entrepreneurship Programme Ad with Modules -->
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
 
     .cam-ad-container {
         /* Golden gradient background */
@@ -13,7 +13,7 @@
         padding: 45px 50px;
         box-shadow: 0 15px 35px rgba(255, 215, 0, 0.25), 0 5px 15px rgba(0, 0, 0, 0.05);
         display: flex;
-        align-items: center;
+        flex-direction: column;
         gap: 40px;
         position: relative;
         overflow: hidden;
@@ -36,10 +36,17 @@
         pointer-events: none;
     }
 
-    .cam-ad-content {
-        flex: 1;
+    /* Top Section (Text + Graphic) */
+    .cam-ad-hero {
+        display: flex;
+        align-items: center;
+        gap: 40px;
         position: relative;
         z-index: 2;
+    }
+
+    .cam-ad-content {
+        flex: 1;
     }
 
     .cam-ad-tagline {
@@ -47,7 +54,7 @@
         font-size: 14px;
         font-weight: 800;
         letter-spacing: 2px;
-        color: #C24A00; /* Subtle rust accent */
+        color: #C24A00;
         margin-bottom: 12px;
         display: block;
     }
@@ -61,7 +68,7 @@
     }
 
     .cam-ad-title span {
-        color: #003366; /* Cambridge Blue contrast */
+        color: #003366;
     }
 
     .cam-ad-desc {
@@ -87,7 +94,6 @@
         box-shadow: 0 6px 20px rgba(0, 51, 102, 0.25);
     }
 
-    /* Button Hover Effects */
     .cam-ad-btn:hover {
         background-color: #001f3f;
         transform: translateY(-4px);
@@ -104,11 +110,8 @@
 
     .cam-ad-graphic {
         flex: 0 0 220px;
-        position: relative;
-        z-index: 2;
     }
 
-    /* Floating animation for the vector graphic */
     @keyframes float-graphic {
         0% { transform: translateY(0px); }
         50% { transform: translateY(-18px); }
@@ -122,12 +125,66 @@
         filter: drop-shadow(0 20px 20px rgba(0,0,0,0.15));
     }
 
+    /* Bottom Section (Module Cards) */
+    .cam-ad-modules {
+        position: relative;
+        z-index: 2;
+        border-top: 2px solid rgba(0, 51, 102, 0.1);
+        padding-top: 30px;
+    }
+
+    .cam-ad-modules-title {
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        color: #003366;
+        margin: 0 0 20px 0;
+        text-align: center;
+    }
+
+    .cam-ad-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+    }
+
+    .cam-ad-card {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-left: 4px solid #003366;
+    }
+
+    .cam-ad-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .cam-ad-card h4 {
+        margin: 0 0 10px 0;
+        font-family: 'Playfair Display', serif;
+        font-size: 18px;
+        color: #003366;
+    }
+
+    .cam-ad-card p {
+        margin: 0;
+        font-size: 13.5px;
+        line-height: 1.5;
+        color: #555555;
+    }
+
     /* Mobile Responsiveness */
     @media (max-width: 768px) {
         .cam-ad-container {
+            padding: 40px 25px;
+        }
+        .cam-ad-hero {
             flex-direction: column-reverse;
             text-align: center;
-            padding: 40px 25px;
             gap: 20px;
         }
         .cam-ad-graphic {
@@ -139,49 +196,64 @@
 </style>
 
 <div class="cam-ad-container">
-    <div class="cam-ad-content">
-        <span class="cam-ad-tagline">University of Cambridge</span>
-        <h2 class="cam-ad-title">Master's in <span>Entrepreneurship</span></h2>
-        <p class="cam-ad-desc">
-            Transform your vision into a viable venture. Join a global network of innovators and learn from world-class experts without stepping away from your current role.
-        </p>
-        <a href="https://www.jbs.cam.ac.uk/programmes/entrepreneurship/" target="_blank" class="cam-ad-btn">
-            Discover the Programme
-            <!-- Arrow Icon -->
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
+    <!-- Top Hero Section -->
+    <div class="cam-ad-hero">
+        <div class="cam-ad-content">
+            <span class="cam-ad-tagline">University of Cambridge</span>
+            <h2 class="cam-ad-title">Master's in <span>Entrepreneurship</span></h2>
+            <p class="cam-ad-desc">
+                Transform your vision into a viable venture. Join a global network of innovators and learn from world-class experts without stepping away from your current role.
+            </p>
+            <a href="https://www.jbs.cam.ac.uk/programmes/entrepreneurship/" target="_blank" class="cam-ad-btn">
+                Discover the Programme
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </div>
+        
+        <div class="cam-ad-graphic">
+            <svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="bulbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffffff"/>
+                        <stop offset="100%" stop-color="#f0f0f0"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="100" cy="100" r="80" fill="#ffffff" opacity="0.3" filter="blur(15px)"/>
+                <path d="M100 20 C60 20 30 50 30 90 C30 115 45 136 65 148 L65 180 C65 185 69 190 75 190 L125 190 C131 190 135 185 135 180 L135 148 C155 136 170 115 170 90 C170 50 140 20 100 20 Z" fill="url(#bulbGradient)" stroke="#003366" stroke-width="8"/>
+                <path d="M70 190 L130 190 L125 210 L75 210 Z" fill="#003366"/>
+                <path d="M85 210 L115 210 L110 225 L90 225 Z" fill="#333333"/>
+                <circle cx="100" cy="85" r="30" fill="none" stroke="#003366" stroke-width="6" stroke-dasharray="10 6"/>
+                <circle cx="100" cy="85" r="15" fill="#C24A00"/>
+                <line x1="100" y1="115" x2="100" y2="140" stroke="#003366" stroke-width="6"/>
+                <path d="M45 70 C50 45 70 35 90 35" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
             </svg>
-        </a>
+        </div>
     </div>
-    
-    <div class="cam-ad-graphic">
-        <!-- Floating Lightbulb & Gear Graphic SVG -->
-        <svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <linearGradient id="bulbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#ffffff"/>
-                    <stop offset="100%" stop-color="#f0f0f0"/>
-                </linearGradient>
-            </defs>
-            <!-- Glowing background aura -->
-            <circle cx="100" cy="100" r="80" fill="#ffffff" opacity="0.3" filter="blur(15px)"/>
+
+    <!-- Bottom Modules Section -->
+    <div class="cam-ad-modules">
+        <h3 class="cam-ad-modules-title">Programme Highlights</h3>
+        <div class="cam-ad-grid">
             
-            <!-- Main Bulb Shape -->
-            <path d="M100 20 C60 20 30 50 30 90 C30 115 45 136 65 148 L65 180 C65 185 69 190 75 190 L125 190 C131 190 135 185 135 180 L135 148 C155 136 170 115 170 90 C170 50 140 20 100 20 Z" fill="url(#bulbGradient)" stroke="#003366" stroke-width="8"/>
+            <div class="cam-ad-card">
+                <h4>Venture Creation</h4>
+                <p>Learn how to validate ideas, build prototypes, and successfully take your product to market.</p>
+            </div>
             
-            <!-- Bulb Base -->
-            <path d="M70 190 L130 190 L125 210 L75 210 Z" fill="#003366"/>
-            <path d="M85 210 L115 210 L110 225 L90 225 Z" fill="#333333"/>
+            <div class="cam-ad-card">
+                <h4>Entrepreneurial Finance</h4>
+                <p>Master the strategies for raising capital, managing cash flow, and valuing early-stage startups.</p>
+            </div>
             
-            <!-- Inner Brain/Gear detail representing innovation -->
-            <circle cx="100" cy="85" r="30" fill="none" stroke="#003366" stroke-width="6" stroke-dasharray="10 6"/>
-            <circle cx="100" cy="85" r="15" fill="#C24A00"/>
-            <line x1="100" y1="115" x2="100" y2="140" stroke="#003366" stroke-width="6"/>
-            
-            <!-- Shine reflection -->
-            <path d="M45 70 C50 45 70 35 90 35" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
-        </svg>
+            <div class="cam-ad-card">
+                <h4>Innovation Strategy</h4>
+                <p>Discover how to disrupt existing markets and scale your operations globally with sustainable advantages.</p>
+            </div>
+
+        </div>
     </div>
 </div>
 <!-- End of Ad -->
